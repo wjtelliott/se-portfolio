@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useEffect, useState } from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, Divider, Stack, Typography } from '@mui/material';
 import {
     centeredFlexBox,
     displayInfo,
@@ -14,8 +14,10 @@ import AboutMe from './AboutMe';
 import Projects from './Projects/Projects';
 import PriorExperience from './PriorExp';
 import ContactMe from './ContactMe';
+import ContactLinks from './HeaderInfo/ContactLinks';
 
 const LandingPage = function () {
+    //eslint-disable-next-line
     const [responseData, setResponseData] = useState({ status: 'Loading' });
 
     useEffect(() => {
@@ -44,23 +46,17 @@ const LandingPage = function () {
     }, []);
 
     return (
-        <Box sx={{ ...centeredFlexBox, p: 3, my: 3 }}>
+        <Box sx={{ ...centeredFlexBox }}>
             <Box
                 sx={{
                     ...centeredFlexBox,
                     ...headerInfo,
-                    p: 3,
+                    color: 'primary.contrastText',
+                    px: 3,
                 }}
             >
-                <Box>
-                    <img
-                        src="/portrait.JPG"
-                        alt="Portrait of William Elliott"
-                        style={{
-                            width: '100%',
-                            borderRadius: '100%',
-                        }}
-                    />
+                <Box alignSelf="center">
+                    <ContactLinks />
 
                     <ContactInfo />
 
@@ -69,14 +65,39 @@ const LandingPage = function () {
                     <HeaderLinks />
                 </Box>
             </Box>
-            <Box sx={{ ...centeredFlexBox, ...displayInfo, fontSize: '4em' }}>
-                <AboutMe />
+            <Box
+                sx={{
+                    ...displayInfo,
 
-                <Projects />
+                    background:
+                        'linear-gradient(45deg, rgba(255,255,255,1) 80%, rgba(180,180,180,1) 90%, rgba(33,55,87,1) 100%)',
+                }}
+            >
+                <Stack
+                    direction="column"
+                    spacing={4}
+                    divider={
+                        <Divider
+                            orientation="horizontal"
+                            flexItem
+                        />
+                    }
+                    sx={{
+                        ...centeredFlexBox,
+                        px: {
+                            xs: 3,
+                            md: 6,
+                        },
+                    }}
+                >
+                    <AboutMe />
 
-                <PriorExperience />
+                    <Projects />
 
-                <ContactMe />
+                    <PriorExperience />
+
+                    <ContactMe />
+                </Stack>
             </Box>
         </Box>
     );

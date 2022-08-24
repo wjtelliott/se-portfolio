@@ -3,7 +3,6 @@ import { Box, Typography } from '@mui/material';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import LaptopMacIcon from '@mui/icons-material/LaptopMac';
 import { centeredFlexBox } from '../../Shared/StylePresets';
 
 const ContactInfo = () => {
@@ -11,11 +10,10 @@ const ContactInfo = () => {
         'wjtelliott@gmail.com',
         '(608) 393-4429',
         '@william-jt-elliott',
-        'william-elliott.herokuapp.com',
     ];
 
     const iconStyle = {
-        fontSize: '2em',
+        fontSize: '1.75em',
         alignSelf: 'center',
     };
 
@@ -29,10 +27,9 @@ const ContactInfo = () => {
                 {index === 0 && <EmailIcon style={{ ...iconStyle }} />}
                 {index === 1 && <PhoneIcon style={{ ...iconStyle }} />}
                 {index === 2 && <LinkedInIcon style={{ ...iconStyle }} />}
-                {index === 3 && <LaptopMacIcon style={{ ...iconStyle }} />}
                 <Typography
                     variant="p"
-                    sx={{ fontSize: '1.75em', mx: 1, mr: 3, my: 1 }}
+                    sx={{ fontSize: '1.75em', mx: 1, mr: 3 }}
                 >
                     {data}
                 </Typography>
@@ -44,7 +41,7 @@ const ContactInfo = () => {
         <Box sx={{ ...centeredFlexBox, justifyContent: 'left' }}>
             <Typography
                 variant="h3"
-                sx={{ fontSize: '3em', mt: 3, mb: 2 }}
+                sx={{ fontSize: '2em', mt: 3, mb: 1 }}
             >
                 CONTACT &nbsp;ME&nbsp; AT
             </Typography>

@@ -14,7 +14,7 @@ const SkillsInfo = () => {
     ];
 
     const iconStyle = {
-        fontSize: '2em',
+        fontSize: '1.5em',
         alignSelf: 'center',
     };
 
@@ -33,7 +33,6 @@ const SkillsInfo = () => {
                     ...centeredFlexBox,
                     justifyContent: 'left',
                     width: 1,
-                    my: 1,
                 }}
                 key={`skillsDataIndex${index}`}
             >
@@ -68,7 +67,7 @@ const SkillsInfo = () => {
         <Box sx={{ ...centeredFlexBox, justifyContent: 'left' }}>
             <Typography
                 variant="h3"
-                sx={{ fontSize: '3em', mt: 3, mb: 2 }}
+                sx={{ fontSize: '2em', mt: 6, mb: 1 }}
             >
                 SKILL&nbsp; SUMMARY
             </Typography>

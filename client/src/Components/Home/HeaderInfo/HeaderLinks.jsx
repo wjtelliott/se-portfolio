@@ -11,6 +11,7 @@ const HeaderLinks = () => {
             sx={{
                 mx: 1,
                 backgroundColor: 'primary.dark',
+                color: page.toLowerCase() === 'contact' ? '#E6C89C' : 'inherit',
             }}
             key={`navIndex${index}`}
         >
@@ -18,7 +19,7 @@ const HeaderLinks = () => {
         </Button>
     ));
 
-    return <Box sx={{ ...centeredFlexBox, my: 8 }}>{formattedButtons}</Box>;
+    return <Box sx={{ ...centeredFlexBox, mt: 6 }}>{formattedButtons}</Box>;
 };
 
 export default HeaderLinks;

@@ -26,7 +26,7 @@ const NavBar = () => {
 
     const handleCloseNavMenu = event => {
         const newUrl = event.target.innerText?.replace(' ', '').toLowerCase();
-        if (newUrl) navigate('#' + newUrl);
+        if (newUrl) window.location.href = '#' + newUrl;
         setAnchorElNav(null);
     };
 

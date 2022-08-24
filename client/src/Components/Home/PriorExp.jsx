@@ -2,7 +2,10 @@ import React from 'react';
 
 const PriorExperience = () => {
     return (
-        <div id="experience">
+        <div
+            id="experience"
+            style={{ fontSize: '4em' }}
+        >
             Prior Experience And main duties Store Associate Part-time Dates:
             Jun '22 - Present Maintain inventory accuracy to ensure minimal
             expenditure waste amongst delivery teams Promptly deliver to

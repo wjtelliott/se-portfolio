@@ -17,13 +17,13 @@ const theme = createTheme({
             light: '#4574b9',
             main: '#325383',
             dark: '#213757',
-            contrastText: '#000',
+            contrastText: '#FFF',
         },
         secondary: {
-            light: '#000',
-            main: '#000',
-            dark: '#000',
-            contrastText: '#fff',
+            light: '#FFF',
+            main: '#FFF',
+            dark: '#FFF',
+            contrastText: '#000',
         },
     },
 });
