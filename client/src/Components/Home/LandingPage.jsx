@@ -2,7 +2,18 @@
 
 import React, { useEffect, useState } from 'react';
 import { Box, Typography } from '@mui/material';
-import { centeredFlexBox } from '../Shared/StylePresets';
+import {
+    centeredFlexBox,
+    displayInfo,
+    headerInfo,
+} from '../Shared/StylePresets';
+import ContactInfo from './HeaderInfo/ContactInfo';
+import SkillsInfo from './HeaderInfo/SkillsInfo';
+import HeaderLinks from './HeaderInfo/HeaderLinks';
+import AboutMe from './AboutMe';
+import Projects from './Projects/Projects';
+import PriorExperience from './PriorExp';
+import ContactMe from './ContactMe';
 
 const LandingPage = function () {
     const [responseData, setResponseData] = useState({ status: 'Loading' });
@@ -27,29 +38,46 @@ const LandingPage = function () {
         };
         fetchData();
 
-        return () => abortContoller.abort();
+        return () => {
+            abortContoller.abort();
+        };
     }, []);
 
     return (
         <Box sx={{ ...centeredFlexBox, p: 3, my: 3 }}>
-            <Typography
-                variant="h3"
-                textAlign="center"
+            <Box
+                sx={{
+                    ...centeredFlexBox,
+                    ...headerInfo,
+                    p: 3,
+                }}
             >
-                Here is the env var test:{' '}
-                {process.env.REACT_APP_TEST ?? 'NO .ENV LOADED'}
-            </Typography>
-            <Typography
-                variant="h4"
-                textAlign="center"
-            >
-                Here is a request to our linked back-end:{' '}
-                {JSON.stringify(responseData)}
-            </Typography>
-            <img
-                alt="A sports banner"
-                src="/banner.jpg"
-            />
+                <Box>
+                    <img
+                        src="/portrait.JPG"
+                        alt="Portrait of William Elliott"
+                        style={{
+                            width: '100%',
+                            borderRadius: '100%',
+                        }}
+                    />
+
+                    <ContactInfo />
+
+                    <SkillsInfo />
+
+                    <HeaderLinks />
+                </Box>
+            </Box>
+            <Box sx={{ ...centeredFlexBox, ...displayInfo, fontSize: '4em' }}>
+                <AboutMe />
+
+                <Projects />
+
+                <PriorExperience />
+
+                <ContactMe />
+            </Box>
         </Box>
     );
 };

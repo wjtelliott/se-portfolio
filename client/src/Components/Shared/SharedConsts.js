@@ -1,3 +1,5 @@
 const logoTitle = 'William Elliott';
 
-module.exports = { logoTitle };
+const navigationLinks = ['Projects', 'Experience', 'Contact'];
+
+module.exports = { logoTitle, navigationLinks };

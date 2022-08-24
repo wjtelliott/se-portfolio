@@ -11,9 +11,9 @@ import {
     Container,
 } from '@mui/material';
 import { Menu as MenuIcon } from '@mui/icons-material';
-import { logoTitle } from './SharedConsts';
+import { logoTitle, navigationLinks } from './SharedConsts';
 
-const pages = ['Projects', 'Experience', 'Education'];
+const pages = navigationLinks;
 
 const NavBar = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
