@@ -25,7 +25,7 @@ const ContactMe = () => {
 
         // Send fetch request
         const sendData = async () => {
-            const url = 'http://localhost:3001/api/contact';
+            const url = '/api/contact';
             const payload = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
