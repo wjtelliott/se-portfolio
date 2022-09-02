@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import { centeredFlexBox, removeLinkDecor } from '../Shared/StylePresets';
 
 const Page404 = () => {
+    /**
+     * Maybe in the future I'll put a game or something here???
+     */
     return (
         <Box sx={{ ...centeredFlexBox }}>
             <Typography

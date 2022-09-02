@@ -1,5 +1,8 @@
 const logoTitle = 'William Elliott';
 
+// Used by appbar menu and header info nav
 const navigationLinks = ['Projects', 'Experience', 'Contact'];
 
-module.exports = { logoTitle, navigationLinks };
+const fadeInDelay = '500';
+
+module.exports = { logoTitle, navigationLinks, fadeInDelay };

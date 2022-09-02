@@ -4,6 +4,10 @@ import CircleIcon from '@mui/icons-material/Circle';
 import { centeredFlexBox } from '../../Shared/StylePresets';
 
 const SkillsInfo = () => {
+    /**
+     * Each skill here will be listed with the amount of circles
+     * next to it eq to the
+     */
     const skillsData = [
         ['JavaScript', 5],
         ['React', 5],

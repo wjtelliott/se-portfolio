@@ -2,7 +2,7 @@ import { Box, Card, Typography } from '@mui/material';
 import React from 'react';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import { centeredFlexBox } from '../Shared/StylePresets';
+import { centeredFlexBox } from '../../Shared/StylePresets';
 
 const AboutMe = () => {
     return (
@@ -14,7 +14,7 @@ const AboutMe = () => {
                 minHeight: '20vh',
                 py: 4,
                 width: {
-                    xs: '75%',
+                    xs: '100%',
                     md: '90%',
                 },
             }}
@@ -49,20 +49,28 @@ const AboutMe = () => {
                     <CardContent sx={{ flex: '1 0 auto' }}>
                         <Typography
                             variant="p"
-                            sx={{ display: 'block', fontSize: '3em', mb: 2 }}
+                            sx={{
+                                display: { xs: 'none', md: 'block' },
+                                fontSize: '3em',
+                                mb: 2,
+                            }}
                         >
                             William Elliott
                         </Typography>
                         <Typography
                             variant="p"
-                            sx={{ fontSize: '1.75em' }}
+                            sx={{ fontSize: { xs: '1.5em', md: '1.75em' } }}
                         >
                             Software Developer with a background in C#, Python,
                             Java, and Javascript.
                         </Typography>
                         <Typography
                             variant="p"
-                            sx={{ fontSize: '1.75em', display: 'block', mt: 3 }}
+                            sx={{
+                                fontSize: { xs: '1em', md: '1.5em' },
+                                display: 'block',
+                                mt: 3,
+                            }}
                         >
                             I enjoy coding, tabletop games, hiking, as well as
                             playing and creating video games. Throughout my
