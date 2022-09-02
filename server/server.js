@@ -11,16 +11,17 @@ const express = require('express'),
     cors = require('cors');
 
 // API CONTROLLERS
-const { testController } = require('./controllers');
+const { contactController } = require('./controllers');
 
 // MIDDLEWARE
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(buildPath));
+app.use(express.json());
 app.use(logger('dev'));
 app.use(cors());
 
 // ROUTES & SERVE CLIENT BUILD
-app.use('/api', testController);
+app.use('/api/contact', contactController);
 app.get('*', (_, res) => {
     res.sendFile(buildPath + 'index.html');
 });

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     Box,
     Button,
@@ -12,6 +12,45 @@ import {
 import { centeredFlexBox } from '../../Shared/StylePresets';
 
 const ContactMe = () => {
+    const [userEmail, setUserEmail] = useState('');
+    const [userComment, setUserComment] = useState('');
+    const [displayForm, setDisplayForm] = useState(true);
+
+    const [sendingStatus, setSendingStatus] = useState('Sending...');
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        // Hide form
+        setDisplayForm(false);
+
+        // Send fetch request
+        const sendData = async () => {
+            const url = 'http://localhost:3001/api/contact';
+            const payload = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email: userEmail,
+                    comment: userComment,
+                }),
+            };
+            const response = await fetch(url, payload);
+            try {
+                const responseData = await response.json();
+
+                setSendingStatus(
+                    responseData.message ??
+                        'There was an issue sending your contact info. Please try again later.'
+                );
+            } catch (_) {
+                setSendingStatus(
+                    'There was an issue sending your contact info. Please try again later.'
+                );
+            }
+        };
+        sendData();
+    };
+
     return (
         <Box id="contact">
             <Typography sx={{ fontSize: { xs: '2em', md: '3em' } }}>
@@ -28,53 +67,62 @@ const ContactMe = () => {
                     mt: 3,
                 }}
             >
-                <form
-                    action="/api/contact"
-                    method="POST"
-                    style={{ width: '100%', ...centeredFlexBox }}
-                >
-                    <FormControl
-                        sx={{
-                            // border: '1px solid black',
-                            // borderRadius: '30px',
-                            width: { xs: '90%', md: '75%' },
-                            p: 1,
-                        }}
+                {displayForm ? (
+                    <form
+                        style={{ width: '100%', ...centeredFlexBox }}
+                        onSubmit={handleSubmit}
                     >
-                        <InputLabel htmlFor="email-input">
-                            Email Address
-                        </InputLabel>
-                        <Input
-                            id="email-input"
-                            name="email"
-                            aria-describedby="email-helper-text"
-                            type="email"
-                            required
-                        />
-                        <FormHelperText id="email-helper-text">
-                            I will never share your email with anyone
-                        </FormHelperText>
-
-                        <TextField
-                            id="comments-input"
-                            name="comments"
-                            aria-describedby="comments-helper-text"
-                            sx={{ mt: 4 }}
-                            required
-                        ></TextField>
-                        <FormHelperText id="comments-helper-text">
-                            Please leave a message for me
-                        </FormHelperText>
-
-                        <Button
-                            type="submit"
-                            variant="contained"
-                            sx={{ mt: 4 }}
+                        <FormControl
+                            sx={{
+                                // border: '1px solid black',
+                                // borderRadius: '30px',
+                                width: { xs: '90%', md: '75%' },
+                                p: 1,
+                            }}
                         >
-                            Submit
-                        </Button>
-                    </FormControl>
-                </form>
+                            <InputLabel htmlFor="email-input">
+                                Email Address
+                            </InputLabel>
+                            <Input
+                                id="email-input"
+                                aria-describedby="email-helper-text"
+                                type="email"
+                                name="email"
+                                required
+                                onChange={e => setUserEmail(e.target.value)}
+                            />
+                            <FormHelperText id="email-helper-text">
+                                I will never share your email with anyone
+                            </FormHelperText>
+
+                            <TextField
+                                id="comments-input"
+                                name="comment"
+                                aria-describedby="comments-helper-text"
+                                sx={{ mt: 4 }}
+                                required
+                                onChange={e => setUserComment(e.target.value)}
+                            ></TextField>
+                            <FormHelperText id="comments-helper-text">
+                                Please leave a message for me
+                            </FormHelperText>
+
+                            <Button
+                                type="submit"
+                                variant="contained"
+                                sx={{ mt: 4 }}
+                            >
+                                Submit
+                            </Button>
+                        </FormControl>
+                    </form>
+                ) : (
+                    <Box sx={{ ...centeredFlexBox }}>
+                        <Typography sx={{ fontSize: '1.5em' }}>
+                            {sendingStatus}
+                        </Typography>
+                    </Box>
+                )}
             </Box>
         </Box>
     );

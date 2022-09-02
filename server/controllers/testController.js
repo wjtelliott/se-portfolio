@@ -1,7 +1,7 @@
 /** @format */
 
 const router = require('express').Router();
-const { OK, NOT_FOUND } = require('http-status-codes/StatusCodes');
+const { OK, NOT_FOUND } = require('http-status-codes');
 const db = require('../db');
 
 router.get('/sanity', async (_, res) => {
