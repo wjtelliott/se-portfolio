@@ -62,12 +62,12 @@ const DisplayInfo = () => {
                     <PriorExperience />
                 </div>
 
-                <div
+                {/* <div
                     data-aos="fade-up"
                     data-aos-delay={fadeInDelay}
                 >
                     <ContactMe />
-                </div>
+                </div> */}
 
                 <Footer />
             </Stack>

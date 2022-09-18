@@ -11,11 +11,15 @@ router.post('/', async (req, res) => {
 
     // Send an email to me!!
     const emailSender = nodemailer.createTransport({
-        service: 'gmail',
+        host: 'smtp.mail.yahoo.com',
+        port: 465,
+        secure: false,
+        service: 'yahoo',
         auth: {
             user: process.env.MAIL_USER,
             pass: process.env.MAIL_PASS,
         },
+        logger: true,
     });
 
     const emailSubject = 'New Contact Email!';
@@ -30,6 +34,7 @@ router.post('/', async (req, res) => {
 
     emailSender.sendMail(mailOptions, function (err, _) {
         if (err) {
+            console.log(err);
             res.status(NOT_FOUND).json({
                 message:
                     'There was an error with your request. Please try sending it again later.',
